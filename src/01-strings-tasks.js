@@ -73,7 +73,6 @@ function getRectangleString(width, height) {
   const bottomSide = `└${horLine}┘\n`;
   return `${topSide}${middleSide}${bottomSide}`;
 }
-console.log(getRectangleString(5, 4));
 
 /**
  * Encode specified string with ROT13 cipher
@@ -91,54 +90,38 @@ console.log(getRectangleString(5, 4));
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let res = '';
+  for (let i = 0; i < str.length; i += 1) {
+    const index = alphabet.indexOf(str[i]);
+    if (index !== -1) {
+      const isUpperCase = index < 26;
+      const newIndex = (index + 13) % 26;
+      res += isUpperCase
+        ? alphabet[newIndex]
+        : alphabet[newIndex + 26];
+    } else {
+      res += str[i];
+    }
+  }
+  return res;
 }
 
-/**
- * Returns true if the value is string; otherwise false.
- * @param {string} value
- * @return {boolean}
- *
- * @example
- *   isString() => false
- *   isString(null) => false
- *   isString([]) => false
- *   isString({}) => false
- *   isString('test') => true
- *   isString(new String('test')) => true
- */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+console.log('encode', encodeToRot13('Jul qvq gur puvpxra pebff gur ebnq?'));
+
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
-
-/**
- * Returns playid card id.
- *
- * Playing cards inittial deck inclides the cards in the following order:
- *
- *  'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
- *  'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
- *  'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
- *  'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
- *
- * (see https://en.wikipedia.org/wiki/Standard_52-card_deck)
- * Function returns the zero-based index of specified card in the initial deck above.
- *
- * @param {string} value
- * @return {number}
- *
- * @example
- *   'A♣' => 0
- *   '2♣' => 1
- *   '3♣' => 2
- *     ...
- *   'Q♠' => 50
- *   'K♠' => 51
- */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const initArr = [
+    'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
+  ];
+  return initArr.indexOf(value);
 }
 
 
