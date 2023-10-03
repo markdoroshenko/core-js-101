@@ -108,8 +108,6 @@ function encodeToRot13(str) {
   return res;
 }
 
-console.log('encode', encodeToRot13('Jul qvq gur puvpxra pebff gur ebnq?'));
-
 function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
