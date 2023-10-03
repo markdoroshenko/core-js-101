@@ -143,7 +143,7 @@ function propagateItemsByPositionIndex(arr) {
 function get3TopItems(/* arr */) {
   throw new Error('Not implemented');
 }
-console.log('get3TopItems', get3TopItems([10, 10, 10, 10]));
+// console.log('get3TopItems', get3TopItems([10, 10, 10, 10]));
 
 /**
  * Returns the number of positive numbers from specified array

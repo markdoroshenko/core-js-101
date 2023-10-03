@@ -76,10 +76,10 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  const str = Math.floor(value).toString();
+  return str[str.length - 1];
 }
-
 
 /**
  * Returns a number by given string representation.
@@ -109,29 +109,25 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt((a ** 2) + (b ** 2) + (c ** 2));
 }
 
 function roundToPowerOfTen(num, pow) {
   return Math.round(num / (10 ** pow)) * (10 ** pow);
 }
 
-function isPrime(n) {
+function isPrime(n, divisor = 2) {
   if (n < 2) {
     return false;
   }
-  const nums = [2, 3, 5, 7];
-  // eslint-disable-next-line no-restricted-syntax
-  for (const number of nums) {
-    if (n === number) {
-      return true;
-    }
-    if (n % number === 0) {
-      return false;
-    }
+  if (divisor > Math.sqrt(n)) {
+    return true;
   }
-  return true;
+  if (n % divisor === 0) {
+    return false;
+  }
+  return isPrime(n, divisor + 1);
 }
 
 /**
@@ -149,8 +145,8 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  return parseInt(value, 10) ? parseInt(value, 10) : def;
 }
 
 module.exports = {
