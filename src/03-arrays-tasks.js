@@ -321,8 +321,6 @@ function getIdentityMatrix(n) {
     return copy;
   });
 }
-console.log('getIdentityMatrix', getIdentityMatrix(5));
-
 /**
  * Creates an array of integers from the specified start to end (inclusive)
  *
@@ -473,19 +471,16 @@ function getElementByIndexes(arr, indexes) {
  */
 function swapHeadAndTail(arr) {
   const len = arr.length;
-  let newArr = [];
   if (len % 2 === 0) {
     const first = arr.slice(len / 2);
     const second = arr.slice(0, len / 2);
-    newArr = first.concat(second);
-  } else {
-    const index = Math.round(len / 2);
-    const first = arr.slice(index);
-    const second = arr.slice(0, index - 1);
-    second.unshift(arr[index - 1]);
-    newArr = first.concat(second);
+    return first.concat(second);
   }
-  return newArr;
+  const index = Math.round(len / 2);
+  const first = arr.slice(index);
+  const second = arr.slice(0, index - 1);
+  second.unshift(arr[index - 1]);
+  return first.concat(second);
 }
 
 module.exports = {

@@ -495,10 +495,6 @@ function getMatrixProduct(m1, m2) {
   }
   return res;
 }
-
-console.log('getMatrixProduct', getMatrixProduct([[1, 0, 0], [0, 1, 0], [0, 0, 1]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]]));
-
-
 /**
  * Returns the evaluation of the specified tic-tac-toe position.
  * See the details: https://en.wikipedia.org/wiki/Tic-tac-toe
